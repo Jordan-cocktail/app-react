@@ -1,13 +1,231 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body, * {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+/* Applique un style global pour le body et pour avoir un fond de couleur et du padding */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%; /* Nécessaire pour que le body prenne toute la hauteur */
+  box-sizing: border-box;
+  background: #14192A;
+}
+
+/* Conteneur global de l'application pour gérer la disposition */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #14192A;
+}
+
+/* Le contenu prend tout l'espace restant, avec un fond et du padding */
+.content {
+  flex: 1; /* Prend toute la hauteur disponible */
+  background-color: #1e2337; /* Changer la couleur du fond du contenu */
+  padding: 20px; /* Ajouter un padding autour du contenu */
+  color: #fff;
+  padding-top: 50px;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 15px;
+  max-width: 100%;
+  background: #14192A;
+  z-index: 9;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: calc(100% - 40px);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  border-radius: 99px;
+}
+.navbar i {
+  color: #8192A9;
+  font-size: 17px;
+}
+.navbar .link.active i {
+  color: #fff;
+}
+.navbar a {
+  display: flex;
+  align-items: center;
+  color: #8192A9;
+  font-size: 11px;
+  flex-direction: column;
+  gap: 5px;
+  flex-basis: 25%;
+  text-decoration: none ;
+}
+.navbar .link.active {
+  color: #FF6120;
+}
+
+.navtop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #14192A;;
+  padding: 10px 15px 10px 5px ;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+.navtop .credits {
+  background: #C2FBED;
+  border-radius: 15px;
+  padding: 1px 5px;
+  color: #14655B;
+  font-weight: 600;
+}
+.navtop .credits i{
+  color: #1CAC95
+}
+.navtop .lifes {
+  background: #D9EFFE;
+  border-radius: 15px;
+  padding: 2px 7px;
+  color: #1988FF;
+  font-weight: 600;
+}
+.navtop .lifes i{
+  color: #13A0FE;
+}
+.navtop .avatar{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #fff;
+}
+.navtopLeft{
+  width:50px;
+  margin-left: 15px;
+}
+.navtopCenter{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+.navtopRight{
+  width:50px;
+  margin-right: 15px;
+
+}
+
+.nav-item {
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+}
+
+.credit-display, .life-display{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 5px;
+  font-weight: 600;
+}
+.credit-display span, .life-display span{
+  font-weight: 600;
+}
+.credit-display i, .life-display i{
+  font-size: 15px;
+}
+
+.navtopLeft i{
+  font-size: 25px;
+  color: #8192A9;
+}
+
+
+/* Style pour l'OffCanvas */
+.off-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1e2338;
+  transform: translateX(-100%); /* Initialement hors de l'écran */
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transition fluide */
+  color: #fff;
+}
+
+.off-canvas.open {
+  transform: translateX(0); /* Lorsque l'OffCanvas est ouvert */
+}
+
+.off-canvas-content {
+  padding: 20px;
+  padding-top: 50px;
+}
+
+/* Style pour le bouton */
+.open-offcanvas-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.off-canvas-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #14192A;;
+  height: 55px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  color: #fff;
+}
+.off-canvas-header-left{
+  width:70px;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+.off-canvas-header-center{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+.off-canvas-header-right{
+  width:70px;
+  margin-right: 15px;
+
+}
+
+.off-canvas-header-center.titrePage h2{
+  margin: 0;
 }
